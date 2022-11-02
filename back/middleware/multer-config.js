@@ -1,6 +1,29 @@
 // Utilisation de multer pour enregistrer les fichiers images
 const multer = require('multer');
 
+const fs = require('fs')
+
+// directory to check if exists
+const dir = './images'
+
+// check if directory exists
+if (fs.existsSync(dir)) {
+  console.log('Directory exists!')
+} else {
+// create new directory    
+  fs.mkdir(dir, err => {
+  if (err) {
+    throw err
+  }
+  console.log('Directory is created.')
+})
+}
+
+
+
+
+
+
 // Modification de l'extension des fichiers
 const MIME_TYPES = {
     'image/jpg': 'jpg',
