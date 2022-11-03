@@ -3,26 +3,21 @@ const multer = require('multer');
 
 const fs = require('fs')
 
-// directory to check if exists
+// vérification existance dossier image sinon création
 const dir = './images'
 
-// create new directory
+
 try {
-    // first check if the directory already exists
+    // test de l'existance du répertoire puis création
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir)
-      console.log('Directory is created.')
+      console.log('Dossier images créé !')
     } else {
-      console.log('Directory already exists.')
+      console.log('Dossier images existant.')
     }
   } catch (err) {
     console.log(err)
   }
-
-
-
-
-
 
 // Modification de l'extension des fichiers
 const MIME_TYPES = {
@@ -36,7 +31,7 @@ const storage = multer.diskStorage({
     destination: (req, file, callback) => {
         callback(null, 'images')
     },
-    // Génération du nom du fichier : nom d'origine + numero unique + . + extension
+    // Génération du nom du fichier : nom d'origine + numero unique + extension
     filename: (req, file, callback) => {
         const name = file.originalname.split(' ').join('_');
         const extension = MIME_TYPES[file.mimetype];
