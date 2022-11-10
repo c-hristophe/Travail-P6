@@ -3,11 +3,11 @@ const multer = require('multer');
 
 const fs = require('fs')
 
-// vérification existance dossier image sinon création
+// vérification existence dossier image sinon création
 const dir = './images'
 
 try {
-    // test de l'existance du répertoire puis création
+    // test de l'existence du répertoire puis création
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir)
       console.log('Dossier images créé !')

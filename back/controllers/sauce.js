@@ -16,7 +16,7 @@ exports.getOneSauce = (req, res, next) => {
     .catch(error => res.status(404).json({ error }));
 };
 
-// Création d'une nouvelle sauce (Post)
+// Création d'une nouvelle sauce 
 exports.createSauce = (req, res, next) => {
   const sauceObject = JSON.parse(req.body.sauce);
   delete sauceObject._id;
@@ -44,7 +44,7 @@ exports.modifySauce = (req, res, next) => {
 }
         
 
-// Suppression d'une sauce (Delete)
+// Suppression d'une sauce
 exports.deleteSauce = (req, res, next) => {
   Sauce.findOne({_id: req.params.id})
     .then(sauce => {
